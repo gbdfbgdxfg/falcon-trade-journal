@@ -213,3 +213,17 @@ footer {
 .logo-link:hover .logo-container {
     transform: scale(1.03);
 }
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+.btn-delete:hover {
+    background: #c0392b;
+}

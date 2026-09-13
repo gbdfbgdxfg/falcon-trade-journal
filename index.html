@@ -36,18 +36,19 @@
         <div class="card-grid">
             <div class="card">
                 <h3>Total Trades</h3>
-                <div class="value">24</div>
+                <div class="value" ID="totalTrades">24</div>
             </div>
             <div class="card">
                 <h3>Win Rate</h3>
-                <div class="value profit">65%</div>
+                <div class="value profit" ID="winRate">65%</div>
             </div>
             <div class="card">
                 <h3>Total Net P&L</h3>
-                <div class="value profit">+$1,250.00</div>
+                <div class="value profit" ID="totalPnl">+$1,250.00</div>
             </div>
         </div>
-
+        
+   
         <!-- Layout Section: Recent Trades & Pie Chart -->
         <div class="dashboard-grid">
             
@@ -63,7 +64,7 @@
                             <th>P&L ($)</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="recentTradesBody"></tbody>
                         <tr>
                             <td>2026-03-10</td>
                             <td><strong>BTC/USDT</strong></td>
@@ -129,6 +130,8 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
