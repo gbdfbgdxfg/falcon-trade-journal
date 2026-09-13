@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeLog Pro - History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    < <header>
+    <a href="index.html" class="logo-link">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Falcon Trade Journal Logo">
+        </div>
+    </a>
+    
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="add-trade.html">Add Trade</a>
+        <a href="history.html">Trade History</a>
+        <a href="money-management.html">Money Management</a>
+    </nav>
+</header>
+
+    <div class="main-container">
+        <h2>All Recorded Trades</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Pair</th>
+                    <th>Type</th>
+                    <th>Entry</th>
+                    <th>Exit</th>
+                    <th>P&L ($)</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2026-03-10</td>
+                    <td><strong>BTC/USDT</strong></td>
+                    <td>BUY</td>
+                    <td>62,000</td>
+                    <td>64,500</td>
+                    <td class="profit">+$250.00</td>
+                    <td>Breakout strategy on 4H chart.</td>
+                </tr>
+                <tr>
+                    <td>2026-03-09</td>
+                    <td><strong>ETH/USDT</strong></td>
+                    <td>SELL</td>
+                    <td>3,400</td>
+                    <td>3,480</td>
+                    <td class="loss">-$80.00</td>
+                    <td>Stopped out early due to news.</td>
+                </tr>
+                <tr>
+                    <td>2026-03-08</td>
+                    <td><strong>EUR/USD</strong></td>
+                    <td>BUY</td>
+                    <td>1.0850</td>
+                    <td>1.0920</td>
+                    <td class="profit">+$140.00</td>
+                    <td>Support retest bounce.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 TradeLog Pro. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

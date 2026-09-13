@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeLog Pro - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js Library Link එක -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+
+    <header>
+    <a href="index.html" class="logo-link">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Falcon Trade Journal Logo">
+        </div>
+    </a>
+    
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="add-trade.html">Add Trade</a>
+        <a href="history.html">Trade History</a>
+        <a href="money-management.html">Money Management</a>
+    </nav>
+</header>
+
+    <!-- Main Content Section -->
+    <div class="main-container">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome to your personal trading journal.</p>
+
+        <!-- Summary Cards -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>Total Trades</h3>
+                <div class="value">24</div>
+            </div>
+            <div class="card">
+                <h3>Win Rate</h3>
+                <div class="value profit">65%</div>
+            </div>
+            <div class="card">
+                <h3>Total Net P&L</h3>
+                <div class="value profit">+$1,250.00</div>
+            </div>
+        </div>
+
+        <!-- Layout Section: Recent Trades & Pie Chart -->
+        <div class="dashboard-grid">
+            
+            <!-- Left Side: Table -->
+            <div class="table-container">
+                <h2>Recent Trades</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Pair</th>
+                            <th>Type</th>
+                            <th>P&L ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2026-03-10</td>
+                            <td><strong>BTC/USDT</strong></td>
+                            <td>BUY</td>
+                            <td class="profit">+$250.00</td>
+                        </tr>
+                        <tr>
+                            <td>2026-03-09</td>
+                            <td><strong>ETH/USDT</strong></td>
+                            <td>SELL</td>
+                            <td class="loss">-$80.00</td>
+                        </tr>
+                        <tr>
+                            <td>2026-03-08</td>
+                            <td><strong>EUR/USD</strong></td>
+                            <td>BUY</td>
+                            <td class="profit">+$140.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Right Side: Pie Chart Box -->
+            <div class="chart-box">
+                <h2>Win vs Loss Ratio</h2>
+                <div class="chart-container">
+                    <canvas id="winLossChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 TradeLog Pro. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Chart.js Script to generate Pie Chart -->
+    <script>
+        const ctx = document.getElementById('winLossChart').getContext('2d');
+        const winLossChart = new Chart(ctx, {
+            type: 'pie', // Pie Chart Type
+            data: {
+                labels: ['Winning Trades', 'Losing Trades'],
+                datasets: [{
+                    data: [16, 8], // 16 Wins, 8 Losses (උදාහරණයක් ලෙස)
+                    backgroundColor: [
+                        '#27ae60', // Green for Win
+                        '#e74c3c'  // Red for Loss
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
