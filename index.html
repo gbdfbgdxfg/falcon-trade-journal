@@ -24,6 +24,14 @@
         <a href="add-trade.html">Add Trade</a>
         <a href="history.html">Trade History</a>
         <a href="money-management.html">Money Management</a>
+        <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
+        <a href="#" class="nav-icon-link" title="Account & Settings">
+            <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </a>
+    </div>
     </nav>
 </header>
 
@@ -64,26 +72,6 @@
                             <th>P&L ($)</th>
                         </tr>
                     </thead>
-                    <tbody id="recentTradesBody"></tbody>
-                        <tr>
-                            <td>2026-03-10</td>
-                            <td><strong>BTC/USDT</strong></td>
-                            <td>BUY</td>
-                            <td class="profit">+$250.00</td>
-                        </tr>
-                        <tr>
-                            <td>2026-03-09</td>
-                            <td><strong>ETH/USDT</strong></td>
-                            <td>SELL</td>
-                            <td class="loss">-$80.00</td>
-                        </tr>
-                        <tr>
-                            <td>2026-03-08</td>
-                            <td><strong>EUR/USD</strong></td>
-                            <td>BUY</td>
-                            <td class="profit">+$140.00</td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
 
@@ -97,6 +85,33 @@
 
         </div>
     </div>
+
+    <!-- Analytics Charts Section -->
+<div class="charts-grid">
+    <!-- Chart 1: Equity Curve (Line Chart) -->
+    <div class="chart-card">
+        <h3>Account Growth (Equity Curve)</h3>
+        <div class="chart-container">
+            <canvas id="equityChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Chart 2: Win vs Loss Distribution (Pie Chart) -->
+    <div class="chart-card">
+        <h3>Win / Loss Ratio</h3>
+        <div class="chart-container">
+            <canvas id="winLossChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Chart 3: Performance by Trading Pair (Bar Chart) -->
+    <div class="chart-card full-width">
+        <h3>PnL by Trading Pair ($)</h3>
+        <div class="chart-container">
+            <canvas id="pairChart"></canvas>
+        </div>
+    </div>
+</div>
 
     <!-- Footer Section -->
     <footer>

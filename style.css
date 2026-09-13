@@ -227,3 +227,499 @@ footer {
 .btn-delete:hover {
     background: #c0392b;
 }
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE STYLES
+   ========================================== */
+
+/* Header & Navigation Bar for Mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .logo-container {
+        width: 180px;
+        margin: 0 auto;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        margin-left: 0;
+        font-size: 14px;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+    }
+
+    /* Main Layout Adjustments */
+    .main-container {
+        width: 95%;
+        margin: 15px auto;
+    }
+
+    /* Summary Cards in 1 Column */
+    .card-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Dashboard Layout (Table & Chart Stacked) */
+    .dashboard-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .table-container, .chart-box, .calc-card {
+        width: 100%;
+    }
+
+    /* Calculator Layout in Mobile */
+    .calculator-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Form Container Padding */
+    .form-box {
+        padding: 20px;
+        width: 100%;
+    }
+
+    /* Make Tables Scroll Horizontally on Mobile (Screen එකෙන් එළියට නොයන ලෙස) */
+    .table-container, .table-section, .main-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 500px; /* Table එක කැපෙන්නේ නැතුව Scroll කරලා බලන්න පුළුවන් වෙනවා */
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    /* Chart Container Height */
+    .chart-container {
+        height: 220px;
+    }
+}
+
+/* ==========================================
+   ANIMATED & GLASSMORPHIC AUTH PAGE STYLES
+   ========================================== */
+
+.auth-body {
+    background: #0f172a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Glowing Orbs Animation */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    background: #27ae60;
+    top: 10%;
+    left: 15%;
+}
+
+.orb-2 {
+    width: 350px;
+    height: 350px;
+    background: #2980b9;
+    bottom: 10%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 50px) scale(1.1); }
+}
+
+/* Auth Main Container & Card Animations */
+.auth-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-card {
+    animation: cardSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cardSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-logo {
+    width: 200px;
+    margin: 0 auto 20px auto;
+    transition: transform 0.3s ease;
+}
+
+.auth-logo:hover {
+    transform: scale(1.05);
+}
+
+.auth-logo img {
+    width: 100%;
+}
+
+.auth-subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tabs with Dynamic Glider */
+.auth-tabs {
+    display: flex;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    padding: 4px;
+    margin-bottom: 25px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #94a3b8;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.auth-tab.active {
+    color: #ffffff;
+}
+
+.tab-glider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #27ae60;
+    border-radius: 25px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+/* Floating Input Effect */
+.floating-input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.floating-input input {
+    width: 100%;
+    padding: 14px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.floating-input label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.floating-input input:focus,
+.floating-input input:not(:placeholder-shown) {
+    border-color: #27ae60;
+    box-shadow: 0 0 10px rgba(39, 174, 96, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.floating-input input:focus ~ label,
+.floating-input input:not(:placeholder-shown) ~ label {
+    top: -8px;
+    left: 8px;
+    font-size: 11px;
+    background: #0f172a;
+    padding: 0 6px;
+    color: #27ae60;
+    border-radius: 4px;
+}
+
+/* Animated Submit Button */
+.animated-btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animated-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+}
+
+.animated-btn:active {
+    transform: translateY(0);
+}
+
+.btn-shine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(30deg);
+    transition: all 0.5s ease;
+}
+
+.animated-btn:hover .btn-shine {
+    left: 100%;
+}
+
+/* Form Fade In */
+.form-fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Dynamic Charts Grid Layout */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.chart-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.chart-card.full-width {
+    grid-column: span 2;
+}
+
+.chart-card h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+/* Mobile Responsiveness for Charts Grid */
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-card.full-width {
+        grid-column: span 1;
+    }
+}
+
+/* Navigation Icon Styling */
+.nav-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.settings-icon {
+    vertical-align: middle;
+    transition: transform 0.4s ease;
+}
+
+/* Hover කළ විට Gear Icon එක Rotate වෙන Animation එක */
+.nav-icon-link:hover .settings-icon {
+    transform: rotate(90deg);
+    color: #27ae60;
+}
+
+.nav-icon-link.active .settings-icon {
+    color: #27ae60;
+}
+
+/* Navigation Settings Wrapper & Dropdown */
+.nav-icon-wrapper {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.settings-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 38px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    padding: 12px;
+    z-index: 1000;
+    animation: dropdownFade 0.2s ease;
+}
+
+.settings-dropdown.show {
+    display: block;
+}
+
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Profile Header inside Dropdown */
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+}
+
+.profile-avatar {
+    width: 36px;
+    height: 36px;
+    background: #27ae60;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.profile-avatar.guest {
+    background: #64748b;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.profile-status {
+    color: #2ecc71;
+    font-size: 11px;
+}
+
+.profile-status.offline {
+    color: #94a3b8;
+}
+
+.dropdown-divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+}
+
+/* Dropdown Menu Items */
+.dropdown-item {
+    display: block;
+    padding: 8px 10px;
+    color: #cbd5e1;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.dropdown-item.login-text {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.dropdown-item.logout-text {
+    color: #e74c3c;
+    font-weight: bold;
+}

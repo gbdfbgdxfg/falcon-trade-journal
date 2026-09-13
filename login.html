@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon Trade Journal - Sign In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+    <!-- Animated Background Glowing Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="auth-container">
+        <div class="auth-card animated-card">
+            
+            <!-- Falcon Logo with Hover Pulse Effect -->
+            <div class="auth-logo">
+                <img src="logo.svg" alt="Falcon Trade Journal Logo">
+            </div>
+
+            <!-- Animated Toggle Tabs (Sign In / Sign Up) -->
+            <div class="auth-tabs">
+                <button id="tabLogin" class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+                <button id="tabRegister" class="auth-tab" onclick="switchAuthTab('register')">Sign Up</button>
+                <div class="tab-glider" id="tabGlider"></div>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="loginForm" class="auth-form form-fade-in">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Access your trading performance dashboard</p>
+                
+                <div class="form-group floating-input">
+                    <input type="text" id="loginUsername" placeholder=" " required>
+                    <label>Username</label>
+                </div>
+                
+                <div class="form-group floating-input">
+                    <input type="password" id="loginPassword" placeholder=" " required>
+                    <label>Password</label>
+                </div>
+                
+                <button type="submit" class="btn-submit animated-btn">
+                    <span>Sign In</span>
+                    <div class="btn-shine"></div>
+                </button>
+            </form>
+
+            <!-- Sign Up (Register) Form -->
+            <form id="registerForm" class="auth-form form-fade-in" style="display: none;">
+                <h2>Create Account</h2>
+                <p class="auth-subtitle">Start tracking your trades like a pro</p>
+                
+                <div class="form-group floating-input">
+                    <input type="text" id="regUsername" placeholder=" " required>
+                    <label>Choose Username</label>
+                </div>
+                
+                <div class="form-group floating-input">
+                    <input type="password" id="regPassword" placeholder=" " required>
+                    <label>Create Password</label>
+                </div>
+                
+                <button type="submit" class="btn-submit animated-btn">
+                    <span>Sign Up</span>
+                    <div class="btn-shine"></div>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (localStorage.getItem('falcon_logged_in') === 'true') {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

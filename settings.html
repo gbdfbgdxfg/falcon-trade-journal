@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon Trade Journal - Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="logo.svg" alt="Falcon Trade Journal Logo">
+            </div>
+        </a>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="add-trade.html">Add Trade</a>
+            <a href="history.html">Trade History</a>
+            <a href="money-management.html">Money Management</a>
+            <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
+        <a href="#" class="nav-icon-link" title="Account & Settings">
+            <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+        </a>
+    </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="main-container">
+        <h1>⚙️ Application Settings</h1>
+        <p>Manage your account preferences and trade data backups.</p>
+
+        <div class="calculator-grid">
+            
+            <!-- Data Backup & Export Options -->
+            <div class="calc-card">
+                <h2>Data Backup & Export</h2>
+                <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Export your trade journal entries for safekeeping or transfer to another device.</p>
+                
+                <button class="btn-submit" onclick="exportTradesJSON()" style="margin-bottom: 10px; background: #2980b9;">📥 Export Data (JSON Backup)</button>
+                
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+                <h2 style="color: #e74c3c;">Danger Zone</h2>
+                <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Permanently delete all your recorded trades from LocalStorage.</p>
+                <button class="btn-delete" onclick="clearAllData()" style="padding: 12px 20px; font-size: 14px;">🗑️ Clear All Trade Data</button>
+            </div>
+
+            <!-- User Info Card -->
+            <div class="calc-card">
+                <h2>Account Information</h2>
+                <p style="margin-bottom: 10px;">Logged in User: <strong id="settingsUsername" style="color: #27ae60;">-</strong></p>
+                <p style="margin-bottom: 10px;">Storage Mode: <strong>Browser LocalStorage (Local Device)</strong></p>
+                <p style="font-size: 13px; color: #7f8c8d; line-height: 1.5; margin-top: 15px;">
+                    Your trading data is safely stored directly inside your browser. No third party server has access to your trade logs.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Falcon Trade Journal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Display current user
+        const activeUser = localStorage.getItem('falcon_current_user') || 'Guest';
+        document.getElementById('settingsUsername').innerText = activeUser;
+
+        // Backup Export Logic
+        function exportTradesJSON() {
+            const trades = localStorage.getItem('falcon_trades') || '[]';
+            const blob = new Blob([trades], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `falcon_trades_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+        }
+
+        // Clear All Data Logic
+        function clearAllData() {
+            if (confirm("WARNING: Are you sure you want to delete ALL trades? This action cannot be undone.")) {
+                localStorage.removeItem('falcon_trades');
+                alert("All trade records have been deleted.");
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
