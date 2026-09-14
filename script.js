@@ -319,3 +319,122 @@ function deleteTrade(tradeId) {
         }
     }
 }
+
+// Timeframe Filtering Logic
+function filterTimeframe(period, e) {
+    // Hide custom date picker if switching to standard periods
+    const customWrapper = document.getElementById('customDateWrapper');
+    if (customWrapper) customWrapper.style.display = 'none';
+
+    // Tab Button active styling update
+    if (e && e.target) {
+        document.querySelectorAll('.tf-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+    }
+
+    const trades = JSON.parse(localStorage.getItem('falcon_trades')) || [];
+    const now = new Date();
+
+    const filteredTrades = trades.filter(trade => {
+        const tradeDate = new Date(trade.date);
+        
+        if (period === 'daily') {
+            return tradeDate.toDateString() === now.toDateString();
+        } 
+        else if (period === 'weekly') {
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(now.getDate() - 7);
+            return tradeDate >= oneWeekAgo && tradeDate <= now;
+        } 
+        else if (period === 'monthly') {
+            return tradeDate.getMonth() === now.getMonth() && tradeDate.getFullYear() === now.getFullYear();
+        }
+        
+        return true; // 'all' time
+    });
+
+    calculateTimeframeStats(filteredTrades);
+}
+
+// Function to calculate and render stats for selected timeframe
+function calculateTimeframeStats(tradesList) {
+    let totalPnL = 0;
+    let wins = 0;
+    let totalGrossProfit = 0;
+    let totalGrossLoss = 0;
+
+    tradesList.forEach(trade => {
+        const pnl = parseFloat(trade.pnl) || 0;
+        totalPnL += pnl;
+
+        if (pnl > 0) {
+            wins++;
+            totalGrossProfit += pnl;
+        } else if (pnl < 0) {
+            totalGrossLoss += Math.abs(pnl);
+        }
+    });
+
+    const totalTrades = tradesList.length;
+    const winRate = totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(1) : 0;
+    const profitFactor = totalGrossLoss > 0 ? (totalGrossProfit / totalGrossLoss).toFixed(2) : (totalGrossProfit > 0 ? totalGrossProfit.toFixed(2) : "0.00");
+
+    // UI Update
+    const pnlElem = document.getElementById('tfNetPnL');
+    pnlElem.innerText = (totalPnL >= 0 ? '+$' : '-$') + Math.abs(totalPnL).toFixed(2);
+    pnlElem.className = 'tf-card-value ' + (totalPnL >= 0 ? 'profit-text' : 'loss-text');
+
+    document.getElementById('tfTotalTrades').innerText = totalTrades;
+    document.getElementById('tfWinRate').innerText = winRate + '%';
+    document.getElementById('tfProfitFactor').innerText = profitFactor;
+}
+
+// Page load වෙනවිට මුලින්ම 'All Time' stats load කිරීම
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('tfNetPnL')) {
+        const trades = JSON.parse(localStorage.getItem('falcon_trades')) || [];
+        calculateTimeframeStats(trades);
+    }
+});
+
+// Toggle Custom Date Picker Input Display
+function toggleCustomRange(e) {
+    document.querySelectorAll('.tf-btn').forEach(btn => btn.classList.remove('active'));
+    if (e && e.target) e.target.classList.add('active');
+
+    const wrapper = document.getElementById('customDateWrapper');
+    if (wrapper) {
+        wrapper.style.display = wrapper.style.display === 'none' || wrapper.style.display === '' ? 'flex' : 'none';
+    }
+}
+
+// Apply Custom Date Filter Logic
+function applyCustomDateFilter() {
+    const startVal = document.getElementById('startDate').value;
+    const endVal = document.getElementById('endDate').value;
+
+    if (!startVal || !endVal) {
+        alert("Please select both Start Date and End Date!");
+        return;
+    }
+
+    const startDate = new Date(startVal);
+    startDate.setHours(0, 0, 0, 0); // Start of day
+
+    const endDate = new Date(endVal);
+    endDate.setHours(23, 59, 59, 999); // End of day
+
+    if (startDate > endDate) {
+        alert("Start Date cannot be greater than End Date!");
+        return;
+    }
+
+    const trades = JSON.parse(localStorage.getItem('falcon_trades')) || [];
+    
+    const customFiltered = trades.filter(trade => {
+        const tradeDate = new Date(trade.date);
+        return tradeDate >= startDate && tradeDate <= endDate;
+    });
+
+    calculateTimeframeStats(customFiltered);
+}

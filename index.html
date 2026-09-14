@@ -99,6 +99,52 @@
         </div>
     </div>
 
+<!-- Timeframe Filter & Performance Summary -->
+<div class="timeframe-container">
+    <div class="timeframe-header">
+        <div class="timeframe-tabs">
+            <button class="tf-btn active" onclick="filterTimeframe('all', event)">All Time</button>
+            <button class="tf-btn" onclick="filterTimeframe('daily', event)">Today (Daily)</button>
+            <button class="tf-btn" onclick="filterTimeframe('weekly', event)">This Week</button>
+            <button class="tf-btn" onclick="filterTimeframe('monthly', event)">This Month</button>
+            <button class="tf-btn" onclick="toggleCustomRange(event)">📅 Custom Range</button>
+        </div>
+
+        <!-- Custom Date Range Picker Dropdown (Hidden by default) -->
+        <div id="customDateWrapper" class="custom-date-wrapper" style="display: none;">
+            <div class="date-input-group">
+                <label for="startDate">From:</label>
+                <input type="date" id="startDate" class="date-picker">
+            </div>
+            <div class="date-input-group">
+                <label for="endDate">To:</label>
+                <input type="date" id="endDate" class="date-picker">
+            </div>
+            <button onclick="applyCustomDateFilter()" class="btn-apply-date">Apply Filter</button>
+        </div>
+    </div>
+
+    <!-- Dynamic Filtered Results Cards -->
+    <div class="tf-stats-grid">
+        <div class="tf-card">
+            <span class="tf-card-title">Filtered Net PnL</span>
+            <h3 id="tfNetPnL" class="tf-card-value">$0.00</h3>
+        </div>
+        <div class="tf-card">
+            <span class="tf-card-title">Total Trades</span>
+            <h3 id="tfTotalTrades" class="tf-card-value">0</h3>
+        </div>
+        <div class="tf-card">
+            <span class="tf-card-title">Win Rate</span>
+            <h3 id="tfWinRate" class="tf-card-value">0%</h3>
+        </div>
+        <div class="tf-card">
+            <span class="tf-card-title">Profit Factor</span>
+            <h3 id="tfProfitFactor" class="tf-card-value">0.00</h3>
+        </div>
+    </div>
+</div>
+
     <!-- Chart 2: Win vs Loss Distribution (Pie Chart) -->
     <div class="chart-card">
         <h3>Win / Loss Ratio</h3>
