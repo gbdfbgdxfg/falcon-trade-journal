@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falcon Trade Journal - Settings</title>
+    <title>Falcon Trade Journal - Settings & Backup</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,46 +20,75 @@
             <a href="add-trade.html">Add Trade</a>
             <a href="history.html">Trade History</a>
             <a href="money-management.html">Money Management</a>
+            
+            <!-- Dynamic Settings Icon -->
             <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
-        <a href="#" class="nav-icon-link" title="Account & Settings">
-            <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-        </a>
-    </div>
+                <a href="#" class="nav-icon-link active" title="Account & Settings">
+                    <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </a>
+            </div>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
+    <!-- Main Container -->
     <div class="main-container">
-        <h1>⚙️ Application Settings</h1>
-        <p>Manage your account preferences and trade data backups.</p>
+        <div class="page-title-box">
+            <h1>⚙️ Settings & Data Backup</h1>
+            <p>Manage your account preferences, export trading logs, or restore backed-up data.</p>
+        </div>
 
-        <div class="calculator-grid">
-            
-            <!-- Data Backup & Export Options -->
-            <div class="calc-card">
-                <h2>Data Backup & Export</h2>
-                <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Export your trade journal entries for safekeeping or transfer to another device.</p>
-                
-                <button class="btn-submit" onclick="exportTradesJSON()" style="margin-bottom: 10px; background: #2980b9;">📥 Export Data (JSON Backup)</button>
-                
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        <div class="settings-grid">
 
-                <h2 style="color: #e74c3c;">Danger Zone</h2>
-                <p style="margin-bottom: 15px; font-size: 14px; color: #666;">Permanently delete all your recorded trades from LocalStorage.</p>
-                <button class="btn-delete" onclick="clearAllData()" style="padding: 12px 20px; font-size: 14px;">🗑️ Clear All Trade Data</button>
+            <!-- Data Export Card -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="icon-box">📥</div>
+                    <div>
+                        <h2>Export Backup</h2>
+                        <span class="card-subtitle">Download all trades to a JSON file</span>
+                    </div>
+                </div>
+                <p class="card-desc">Save a local copy of your entire trade history and settings for safety.</p>
+                <button onclick="exportData()" class="btn-action btn-export">
+                    <span>Download JSON Backup</span>
+                </button>
             </div>
 
-            <!-- User Info Card -->
-            <div class="calc-card">
-                <h2>Account Information</h2>
-                <p style="margin-bottom: 10px;">Logged in User: <strong id="settingsUsername" style="color: #27ae60;">-</strong></p>
-                <p style="margin-bottom: 10px;">Storage Mode: <strong>Browser LocalStorage (Local Device)</strong></p>
-                <p style="font-size: 13px; color: #7f8c8d; line-height: 1.5; margin-top: 15px;">
-                    Your trading data is safely stored directly inside your browser. No third party server has access to your trade logs.
-                </p>
+            <!-- Data Import Card -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <div class="icon-box">📤</div>
+                    <div>
+                        <h2>Restore Backup</h2>
+                        <span class="card-subtitle">Import trades from a JSON file</span>
+                    </div>
+                </div>
+                <p class="card-desc">Select a previously downloaded Falcon backup file to restore your trades.</p>
+                <label for="importFileInput" class="btn-action btn-import">
+                    <span>Upload & Restore File</span>
+                </label>
+                <input type="file" id="importFileInput" accept=".json" onchange="importData(event)" style="display: none;">
+            </div>
+
+            <!-- Danger Zone Card -->
+            <div class="settings-card danger-card full-width">
+                <div class="card-header">
+                    <div class="icon-box danger-icon">🚨</div>
+                    <div>
+                        <h2 class="danger-title">Danger Zone</h2>
+                        <span class="card-subtitle">Irreversible account actions</span>
+                    </div>
+                </div>
+                <div class="danger-body">
+                    <div>
+                        <h4>Clear All Journal Data</h4>
+                        <p>This will permanently erase all recorded trade logs and statistics from your browser.</p>
+                    </div>
+                    <button onclick="clearAllTrades()" class="btn-danger">Clear All Trades</button>
+                </div>
             </div>
 
         </div>
@@ -71,26 +100,49 @@
 
     <script src="script.js"></script>
     <script>
-        // Display current user
-        const activeUser = localStorage.getItem('falcon_current_user') || 'Guest';
-        document.getElementById('settingsUsername').innerText = activeUser;
-
-        // Backup Export Logic
-        function exportTradesJSON() {
+        // Export Backup Function
+        function exportData() {
             const trades = localStorage.getItem('falcon_trades') || '[]';
             const blob = new Blob([trades], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
+            
             const a = document.createElement('a');
             a.href = url;
-            a.download = `falcon_trades_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.download = `Falcon_Trades_Backup_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
-        // Clear All Data Logic
-        function clearAllData() {
-            if (confirm("WARNING: Are you sure you want to delete ALL trades? This action cannot be undone.")) {
+        // Import Restore Function
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsedData = JSON.parse(e.target.result);
+                    if (Array.isArray(parsedData)) {
+                        localStorage.setItem('falcon_trades', JSON.stringify(parsedData));
+                        alert('Backup restored successfully!');
+                        window.location.href = 'history.html';
+                    } else {
+                        alert('Invalid backup file format!');
+                    }
+                } catch (err) {
+                    alert('Error reading JSON file!');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Clear Data Function
+        function clearAllTrades() {
+            if (confirm("WARNING: Are you sure you want to delete ALL trade data? This action cannot be undone!")) {
                 localStorage.removeItem('falcon_trades');
-                alert("All trade records have been deleted.");
+                alert("All trade records have been cleared.");
                 window.location.href = 'index.html';
             }
         }

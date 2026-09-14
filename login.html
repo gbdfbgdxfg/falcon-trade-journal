@@ -3,79 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falcon Trade Journal - Sign In</title>
+    <title>Falcon Trade Journal - Login</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Identity Services SDK Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body class="auth-body">
 
-    <!-- Animated Background Glowing Orbs -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
+    <div class="auth-card">
+        <!-- Logo Section -->
+        <div class="auth-header">
+            <div class="logo-box">
+                <img src="logo.svg" alt="Falcon Logo" class="auth-logo">
+            </div>
+            <h2>Welcome Back!</h2>
+            <p>Log in to access your trading journal and analytics.</p>
+        </div>
 
-    <div class="auth-container">
-        <div class="auth-card animated-card">
+        <!-- Google Sign-In Container -->
+        <div class="google-btn-wrapper">
+            <div id="g_id_onload"
+                 data-client_id="17632715378-1ai24bv9hh1o250o5npqpb2vutnpkd34.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
             
-            <!-- Falcon Logo with Hover Pulse Effect -->
-            <div class="auth-logo">
-                <img src="logo.svg" alt="Falcon Trade Journal Logo">
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="filled_blue"
+                 data-text="sign_in_with"
+                 data-shape="pill"
+                 data-logo_alignment="left"
+                 data-width="320">
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="auth-divider">
+            <span>or sign in with email</span>
+        </div>
+
+        <!-- Traditional Login Form -->
+        <form class="auth-form" onsubmit="handleEmailLogin(event)">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="name@example.com" required>
             </div>
 
-            <!-- Animated Toggle Tabs (Sign In / Sign Up) -->
-            <div class="auth-tabs">
-                <button id="tabLogin" class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
-                <button id="tabRegister" class="auth-tab" onclick="switchAuthTab('register')">Sign Up</button>
-                <div class="tab-glider" id="tabGlider"></div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
             </div>
 
-            <!-- Sign In Form -->
-            <form id="loginForm" class="auth-form form-fade-in">
-                <h2>Welcome Back</h2>
-                <p class="auth-subtitle">Access your trading performance dashboard</p>
-                
-                <div class="form-group floating-input">
-                    <input type="text" id="loginUsername" placeholder=" " required>
-                    <label>Username</label>
-                </div>
-                
-                <div class="form-group floating-input">
-                    <input type="password" id="loginPassword" placeholder=" " required>
-                    <label>Password</label>
-                </div>
-                
-                <button type="submit" class="btn-submit animated-btn">
-                    <span>Sign In</span>
-                    <div class="btn-shine"></div>
-                </button>
-            </form>
+            <div class="form-actions">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
 
-            <!-- Sign Up (Register) Form -->
-            <form id="registerForm" class="auth-form form-fade-in" style="display: none;">
-                <h2>Create Account</h2>
-                <p class="auth-subtitle">Start tracking your trades like a pro</p>
-                
-                <div class="form-group floating-input">
-                    <input type="text" id="regUsername" placeholder=" " required>
-                    <label>Choose Username</label>
-                </div>
-                
-                <div class="form-group floating-input">
-                    <input type="password" id="regPassword" placeholder=" " required>
-                    <label>Create Password</label>
-                </div>
-                
-                <button type="submit" class="btn-submit animated-btn">
-                    <span>Sign Up</span>
-                    <div class="btn-shine"></div>
-                </button>
-            </form>
+            <button type="submit" class="btn-login-submit">Sign In</button>
+        </form>
 
+        <!-- Footer link -->
+        <div class="auth-footer">
+            <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
         </div>
     </div>
 
     <script src="script.js"></script>
     <script>
-        if (localStorage.getItem('falcon_logged_in') === 'true') {
+        // Traditional Email Login Handling
+        function handleEmailLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Temporary login mock
+            const userProfile = {
+                name: email.split('@')[0],
+                email: email
+            };
+            localStorage.setItem('falcon_user', JSON.stringify(userProfile));
+            alert('Login Successful!');
             window.location.href = 'index.html';
+        }
+
+        // Google Sign-In Callback
+        function handleCredentialResponse(response) {
+            const responsePayload = parseJwt(response.credential);
+            
+            const userProfile = {
+                id: responsePayload.sub,
+                name: responsePayload.name,
+                email: responsePayload.email,
+                picture: responsePayload.picture
+            };
+            
+            localStorage.setItem('falcon_user', JSON.stringify(userProfile));
+            alert(`Welcome back, ${responsePayload.name}!`);
+            window.location.href = "index.html";
+        }
+
+        // Helper Function to decode JWT Token
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
         }
     </script>
 </body>

@@ -3,148 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeLog Pro - Money Management</title>
+    <title>Falcon Trade Journal - Money Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header Section -->
-     <header>
-    <a href="index.html" class="logo-link">
-        <div class="logo-container">
-            <img src="logo.svg" alt="Falcon Trade Journal Logo">
-        </div>
-    </a>
-    
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="add-trade.html">Add Trade</a>
-        <a href="history.html">Trade History</a>
-        <a href="money-management.html">Money Management</a>
-        <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
-        <a href="#" class="nav-icon-link" title="Account & Settings">
-            <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+    <header>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="logo.svg" alt="Falcon Trade Journal Logo">
+            </div>
         </a>
-    </div>
-    </nav>
-</header>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="add-trade.html">Add Trade</a>
+            <a href="history.html">Trade History</a>
+            <a href="money-management.html" class="active">Money Management</a>
+            
+            <!-- Dynamic Settings & Profile Icon -->
+            <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
+                <a href="#" class="nav-icon-link" title="Account & Settings">
+                    <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Main Content Section -->
     <div class="main-container">
-        <h1>🛡️ Risk & Money Management</h1>
-        <p>Calculate your position size and manage trading risks effectively before entering a trade.</p>
+        <div class="page-title-box">
+            <h1>🛡️ Risk & Money Management</h1>
+            <p>Calculate position sizes, risk per trade, and risk-to-reward ratios to protect your capital.</p>
+        </div>
 
-        <div class="calculator-grid">
+        <div class="mm-grid">
             
-            <!-- Position Size Calculator Box -->
-            <div class="calc-card">
-                <h2>Position Size Calculator</h2>
-                <form id="positionForm">
+            <!-- Position Size Calculator Card -->
+            <div class="mm-card">
+                <div class="card-header">
+                    <div class="icon-box">📊</div>
+                    <h2>Position Size Calculator</h2>
+                </div>
+                
+                <form id="calcForm" onsubmit="event.preventDefault(); calculateRisk();">
                     <div class="form-group">
                         <label>Account Balance ($)</label>
-                        <input type="number" id="accountSize" value="10000" required>
+                        <input type="number" id="accountBalance" placeholder="e.g. 1000" step="any" required>
                     </div>
+
                     <div class="form-group">
                         <label>Risk Percentage (%)</label>
-                        <input type="number" id="riskPercent" value="1" step="0.1" required>
+                        <input type="number" id="riskPercent" placeholder="e.g. 1 or 2" step="any" value="1" required>
                     </div>
+
                     <div class="form-group">
-                        <label>Entry Price ($)</label>
-                        <input type="number" id="calcEntry" placeholder="e.g. 60000" step="any" required>
+                        <label>Stop Loss (Points / Pips / %)</label>
+                        <input type="number" id="stopLossPips" placeholder="e.g. 20" step="any" required>
                     </div>
-                    <div class="form-group">
-                        <label>Stop Loss Price ($)</label>
-                        <input type="number" id="calcSL" placeholder="e.g. 59000" step="any" required>
-                    </div>
-                    <button type="button" class="btn-submit" onclick="calculatePosition()">Calculate Position Size</button>
+
+                    <button type="submit" class="btn-submit">Calculate Position</button>
                 </form>
 
                 <!-- Calculation Results -->
-                <div class="result-box" id="calcResult" style="display:none;">
-                    <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
-                    <h3>Results:</h3>
-                    <p>Amount to Risk: <strong class="loss" id="resRiskAmount">$0.00</strong></p>
-                    <p>Position Size (Units): <strong id="resPositionUnits">0.00</strong></p>
-                    <p>Total Position Value: <strong id="resPositionValue">$0.00</strong></p>
+                <div class="results-box" id="resultBox" style="display: none;">
+                    <div class="result-item">
+                        <span>Max Cash Amount at Risk:</span>
+                        <strong id="riskAmountResult" class="loss-text">$0.00</strong>
+                    </div>
+                    <div class="result-item highlight">
+                        <span>Recommended Position Size:</span>
+                        <strong id="positionSizeResult" class="profit-text">0.00 Units</strong>
+                    </div>
                 </div>
             </div>
 
-            <!-- Risk Rules & Cheat Sheet Box -->
-            <div class="calc-card">
-                <h2>Golden Rules of Risk Management</h2>
-                <ul class="rules-list">
-                    <li><strong>The 1% Rule:</strong> Never risk more than 1% - 2% of your total account balance on a single trade.</li>
-                    <li><strong>Risk-to-Reward Ratio (RRR):</strong> Always aim for at least a 1:2 RRR (Risk $10 to make $20).</li>
-                    <li><strong>Max Daily Drawdown:</strong> Stop trading for the day if you lose 3 consecutive trades or 3% of your account.</li>
-                </ul>
+            <!-- Risk Reward Ratio Calculator Card -->
+            <div class="mm-card">
+                <div class="card-header">
+                    <div class="icon-box">⚖️</div>
+                    <h2>Risk to Reward Ratio (RRR)</h2>
+                </div>
+                
+                <form id="rrrForm" onsubmit="event.preventDefault(); calculateRRR();">
+                    <div class="form-group">
+                        <label>Entry Price ($)</label>
+                        <input type="number" id="rrrEntry" placeholder="e.g. 65000" step="any" required>
+                    </div>
 
-                <h3 style="margin-top: 25px; margin-bottom: 10px;">Risk Amount Quick Guide</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Account Size</th>
-                            <th>1% Risk Amount</th>
-                            <th>2% Risk Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>$1,000</td>
-                            <td class="loss">$10.00</td>
-                            <td class="loss">$20.00</td>
-                        </tr>
-                        <tr>
-                            <td>$5,000</td>
-                            <td class="loss">$50.00</td>
-                            <td class="loss">$100.00</td>
-                        </tr>
-                        <tr>
-                            <td>$10,000</td>
-                            <td class="loss">$100.00</td>
-                            <td class="loss">$200.00</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="form-group">
+                        <label>Stop Loss Price ($)</label>
+                        <input type="number" id="rrrSL" placeholder="e.g. 64500" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Take Profit Price ($)</label>
+                        <input type="number" id="rrrTP" placeholder="e.g. 66500" step="any" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit btn-secondary">Calculate RRR</button>
+                </form>
+
+                <div class="results-box" id="rrrResultBox" style="display: none;">
+                    <div class="result-item">
+                        <span>Risk Distance:</span>
+                        <strong id="riskDistanceResult">$0.00</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Reward Distance:</span>
+                        <strong id="rewardDistanceResult" class="profit-text">$0.00</strong>
+                    </div>
+                    <div class="result-item highlight">
+                        <span>Risk to Reward Ratio:</span>
+                        <strong id="rrrRatioResult" class="gold-text">1 : 0.00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rules & Guidelines Card -->
+            <div class="mm-card full-width">
+                <div class="card-header">
+                    <div class="icon-box">💡</div>
+                    <h2>Golden Rules of Risk Management</h2>
+                </div>
+                <div class="rules-grid">
+                    <div class="rule-box">
+                        <span class="rule-num">1</span>
+                        <h4>The 1-2% Rule</h4>
+                        <p>Never risk more than 1% to 2% of your total account balance on a single trade entry.</p>
+                    </div>
+                    <div class="rule-box">
+                        <span class="rule-num">2</span>
+                        <h4>Minimum 1:2 RRR</h4>
+                        <p>Always aim for a Take Profit that is at least twice your Stop Loss distance.</p>
+                    </div>
+                    <div class="rule-box">
+                        <span class="rule-num">3</span>
+                        <h4>Capital Preservation</h4>
+                        <p>Protecting your drawdown is more important than hunting for quick profits.</p>
+                    </div>
+                </div>
             </div>
 
         </div>
     </div>
 
-    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2026 TradeLog Pro. All Rights Reserved.</p>
+        <p>&copy; 2026 Falcon Trade Journal. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Calculator -->
+    <script src="script.js"></script>
     <script>
-        function calculatePosition() {
-            const balance = parseFloat(document.getElementById('accountSize').value);
+        // Position Size Calculator JS Logic
+        function calculateRisk() {
+            const balance = parseFloat(document.getElementById('accountBalance').value);
             const riskPct = parseFloat(document.getElementById('riskPercent').value);
-            const entry = parseFloat(document.getElementById('calcEntry').value);
-            const sl = parseFloat(document.getElementById('calcSL').value);
+            const slPips = parseFloat(document.getElementById('stopLossPips').value);
 
-            if (!balance || !riskPct || !entry || !sl || entry === sl) {
-                alert("Please fill in all fields with valid numbers (Entry and Stop Loss cannot be equal).");
-                return;
+            if (balance > 0 && riskPct > 0 && slPips > 0) {
+                const maxRiskDollars = (balance * riskPct) / 100;
+                const positionSize = maxRiskDollars / slPips;
+
+                document.getElementById('riskAmountResult').innerText = '$' + maxRiskDollars.toFixed(2);
+                document.getElementById('positionSizeResult').innerText = positionSize.toFixed(2) + ' Units';
+                document.getElementById('resultBox').style.display = 'block';
             }
+        }
 
-            // Calculations
-            const riskAmount = balance * (riskPct / 100);
-            const priceDistance = Math.abs(entry - sl);
-            const positionUnits = riskAmount / priceDistance;
-            const positionValue = positionUnits * entry;
+        // RRR Calculator JS Logic
+        function calculateRRR() {
+            const entry = parseFloat(document.getElementById('rrrEntry').value);
+            const sl = parseFloat(document.getElementById('rrrSL').value);
+            const tp = parseFloat(document.getElementById('rrrTP').value);
 
-            // Display Results
-            document.getElementById('resRiskAmount').innerText = "$" + riskAmount.toFixed(2);
-            document.getElementById('resPositionUnits').innerText = positionUnits.toFixed(4);
-            document.getElementById('resPositionValue').innerText = "$" + positionValue.toFixed(2);
+            const riskDist = Math.abs(entry - sl);
+            const rewardDist = Math.abs(tp - entry);
 
-            document.getElementById('calcResult').style.display = 'block';
+            if (riskDist > 0) {
+                const ratio = (rewardDist / riskDist).toFixed(2);
+
+                document.getElementById('riskDistanceResult').innerText = '$' + riskDist.toFixed(2);
+                document.getElementById('rewardDistanceResult').innerText = '$' + rewardDist.toFixed(2);
+                document.getElementById('rrrRatioResult').innerText = '1 : ' + ratio;
+                document.getElementById('rrrResultBox').style.display = 'block';
+            }
         }
     </script>
-
 </body>
 </html>

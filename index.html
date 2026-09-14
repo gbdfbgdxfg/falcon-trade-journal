@@ -61,20 +61,23 @@
         <div class="dashboard-grid">
             
             <!-- Left Side: Table -->
-            <div class="table-container">
-                <h2>Recent Trades</h2>
-                <table>
+            <div class="table-card">
+                <h3>Recent Trades</h3>
+                  <table>
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Pair</th>
                             <th>Type</th>
-                            <th>P&L ($)</th>
+                            <th>Model</th>
+                            <th>Win OR Loss</th>
+                            <th>PNL</th>
                         </tr>
                     </thead>
-                </table>
-            </div>
-
+                <tbody id="recentTradesBody">
+             </tbody>
+    </table>
+</div>
             <!-- Right Side: Pie Chart Box -->
             <div class="chart-box">
                 <h2>Win vs Loss Ratio</h2>

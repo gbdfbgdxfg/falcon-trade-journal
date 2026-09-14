@@ -36,41 +36,38 @@
         <div class="form-box">
             <h2>Record New Trade</h2>
             <br>
-            <form id="addTradeForm">
+           <form id="addTradeForm">
     <div class="form-group">
         <label>Trade Date</label>
         <input type="date" id="tradeDate" required>
     </div>
+    
     <div class="form-group">
         <label>Pair / Asset</label>
         <input type="text" id="tradePair" placeholder="e.g. BTC/USDT" required>
     </div>
+
     <div class="form-group">
-        <label>Type</label>
+        <label>Trade Type</label>
         <select id="tradeType">
-            <option value="BUY">BUY</option>
-            <option value="SELL">SELL</option>
+            <option value="BUY">BUY / LONG</option>
+            <option value="SELL">SELL / SHORT</option>
         </select>
     </div>
+
     <div class="form-group">
-        <label>Entry Price ($)</label>
-        <input type="number" step="any" id="entryPrice" required>
+        <label>Trading Model / Strategy</label>
+         <input type="text" id="tradeModel" placeholder="e.g. ICT, SMC, Breakout" required>
     </div>
+
     <div class="form-group">
-        <label>Exit Price ($)</label>
-        <input type="number" step="any" id="exitPrice" required>
+        <label>Win OR loss</label>
+        <input type="text" step="any" id="pnl" required>
     </div>
-    <div class="form-group">
-        <label>Profit / Loss ($)</label>
-        <input type="number" step="any" id="pnl" placeholder="Minus (-) for Loss" required>
-    </div>
-    <div class="form-group">
-        <label>Notes / Strategy</label>
-        <textarea id="tradeNotes" rows="4"></textarea>
-    </div>
+
+
     <button type="submit" class="btn-submit">Save Trade Entry</button>
 </form>
-        </div>
     </div>
 
     <footer>
