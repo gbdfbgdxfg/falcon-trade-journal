@@ -3,78 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradeLog Pro - Add Trade</title>
+    <title>Falcon Trade Journal - Add Trade</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .image-preview-container {
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+        }
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
 <body>
 
-     <header>
-    <a href="index.html" class="logo-link">
-        <div class="logo-container">
-            <img src="logo.svg" alt="Falcon Trade Journal Logo">
-        </div>
-    </a>
-    
-    <nav>
-        <a href="index.html">Dashboard</a>
-        <a href="add-trade.html">Add Trade</a>
-        <a href="history.html">Trade History</a>
-        <a href="money-management.html">Money Management</a>
-        <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
-        <a href="#" class="nav-icon-link" title="Account & Settings">
-            <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+    <header>
+        <a href="index.html" class="logo-link">
+            <div class="logo-container">
+                <img src="logo.svg" alt="Falcon Trade Journal Logo">
+            </div>
         </a>
-    </div>
-    
-    </nav>
-</header>
+        
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="add-trade.html" class="active">Add Trade</a>
+            <a href="history.html">Trade History</a>
+            <a href="money-management.html">Money Management</a>
+            <div id="settingsIconBtn" class="nav-icon-wrapper" onclick="toggleSettingsDropdown(event)">
+                <a href="#" class="nav-icon-link" title="Account & Settings">
+                    <svg class="settings-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
 
     <div class="main-container">
         <div class="form-box">
             <h2>Record New Trade</h2>
             <br>
-           <form id="addTradeForm">
-    <div class="form-group">
-        <label>Trade Date</label>
-        <input type="date" id="tradeDate" required>
-    </div>
-    
-    <div class="form-group">
-        <label>Pair / Asset</label>
-        <input type="text" id="tradePair" placeholder="e.g. BTC/USDT" required>
-    </div>
+            <form id="addTradeForm">
+                <div class="form-group">
+                    <label for="tradeDate">Trade Date</label>
+                    <input type="date" id="tradeDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tradePair">Pair / Asset</label>
+                    <input type="text" id="tradePair" placeholder="e.g. BTC/USDT, EUR/USD" required>
+                </div>
 
-    <div class="form-group">
-        <label>Trade Type</label>
-        <select id="tradeType">
-            <option value="BUY">BUY / LONG</option>
-            <option value="SELL">SELL / SHORT</option>
-        </select>
-    </div>
+                <div class="form-group">
+                    <label for="tradeType">Trade Type</label>
+                    <select id="tradeType">
+                        <option value="BUY">BUY / LONG</option>
+                        <option value="SELL">SELL / SHORT</option>
+                    </select>
+                </div>
 
-    <div class="form-group">
-        <label>Trading Model / Strategy</label>
-         <input type="text" id="tradeModel" placeholder="e.g. ICT, SMC, Breakout" required>
-    </div>
+                <div class="form-group">
+                    <label for="tradeModel">Trading Model / Strategy</label>
+                    <input type="text" id="tradeModel" placeholder="e.g. ICT, SMC, Breakout" required>
+                </div>
 
-    <div class="form-group">
-        <label>Win OR loss</label>
-        <input type="text" step="any" id="pnl" required>
-    </div>
+                <!-- Profit / Loss Amount ($ PnL) -->
+                <div class="form-group">
+                    <label for="pnlAmount">Profit / Loss ($ PnL)</label>
+                    <input type="number" step="any" id="pnlAmount" placeholder="e.g. 150 or -50" required>
+                </div>
 
+                <!-- Win / Loss Result Dropdown -->
+                <div class="form-group">
+                    <label for="tradeResult">Outcome (Win / Loss)</label>
+                    <select id="tradeResult">
+                        <option value="WIN">WIN 🟢</option>
+                        <option value="LOSS">LOSS 🔴</option>
+                        <option value="BE">BREAKEVEN ⚪</option>
+                    </select>
+                </div>
 
-    <button type="submit" class="btn-submit">Save Trade Entry</button>
-</form>
+                <!-- NEW: Chart / Trade Screenshot Image Input -->
+                <div class="form-group">
+                    <label for="tradeImage">Trade Screenshot / Chart Image</label>
+                    <input type="file" id="tradeFileInput" accept="image/*" onchange="previewImage(event)">
+                    <p style="text-align: center; margin: 5px 0; font-size: 12px; opacity: 0.7;">- OR -</p>
+                    <input type="url" id="tradeImageUrl" placeholder="Paste TradingView Image Link (https://...)" oninput="previewUrlImage()">
+                    
+                    <div id="imagePreviewBox" class="image-preview-container">
+                        <img id="imgPreview" src="" alt="Chart Preview">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Save Trade Entry</button>
+            </form>
+        </div>
     </div>
 
     <footer>
-        <script src="script.js"></script>
-        <p>&copy; 2026 TradeLog Pro. All Rights Reserved.</p>
-        
+        <p>&copy; 2026 Falcon Trade Journal. All Rights Reserved.</p>
     </footer>
 
+    <script src="script.js"></script>
+    <script>
+        let base64Image = "";
+
+        // Automatic Outcome Selection based on PnL Value
+        document.getElementById('pnlAmount').addEventListener('input', function() {
+            const val = parseFloat(this.value);
+            const resultSelect = document.getElementById('tradeResult');
+            if (!isNaN(val)) {
+                if (val > 0) resultSelect.value = 'WIN';
+                else if (val < 0) resultSelect.value = 'LOSS';
+                else resultSelect.value = 'BE';
+            }
+        });
+
+        // Preview File Image
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    base64Image = e.target.result;
+                    document.getElementById('imgPreview').src = base64Image;
+                    document.getElementById('imagePreviewBox').style.display = 'block';
+                    document.getElementById('tradeImageUrl').value = ''; // clear URL input
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Preview Image from URL
+        function previewUrlImage() {
+            const url = document.getElementById('tradeImageUrl').value.trim();
+            if (url) {
+                base64Image = url;
+                document.getElementById('imgPreview').src = url;
+                document.getElementById('imagePreviewBox').style.display = 'block';
+                document.getElementById('tradeFileInput').value = ''; // clear File input
+            } else {
+                document.getElementById('imagePreviewBox').style.display = 'none';
+            }
+        }
+
+        // Set Default Date to Today
+        document.getElementById('tradeDate').valueAsDate = new Date();
+
+        // Save Form Data to localStorage
+        document.getElementById('addTradeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newTrade = {
+                id: Date.now(),
+                date: document.getElementById('tradeDate').value,
+                pair: document.getElementById('tradePair').value.toUpperCase().trim(),
+                type: document.getElementById('tradeType').value,
+                model: document.getElementById('tradeModel').value,
+                pnl: parseFloat(document.getElementById('pnlAmount').value) || 0,
+                result: document.getElementById('tradeResult').value,
+                image: base64Image || "" // Store image Base64 or Link
+            };
+
+            const trades = JSON.parse(localStorage.getItem('falcon_trades')) || [];
+            trades.unshift(newTrade);
+            localStorage.setItem('falcon_trades', JSON.stringify(trades));
+
+            alert('Trade Saved Successfully!');
+            window.location.href = 'history.html';
+        });
+    </script>
 </body>
 </html>
