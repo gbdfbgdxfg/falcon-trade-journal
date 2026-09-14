@@ -1208,3 +1208,104 @@ footer {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+/* ====================================================
+   ENHANCED SIGNUP & AUTH STYLING
+   ==================================================== */
+.auth-body {
+    background-color: #0b0f19;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Ambient Glows */
+.glow-bg {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    z-index: 0;
+}
+
+.glow-1 {
+    background: #3b82f6;
+    top: 10%;
+    left: 15%;
+}
+
+.glow-2 {
+    background: #10b981;
+    bottom: 10%;
+    right: 15%;
+}
+
+.auth-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(18, 24, 38, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Input Icon Wrappers */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.auth-form input {
+    width: 100%;
+    padding-left: 42px !important;
+}
+
+/* Action Button Effects */
+.btn-login-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    border: none;
+    border-radius: 12px;
+    height: 46px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-login-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+.btn-arrow {
+    transition: transform 0.2s ease;
+}
+
+.btn-login-submit:hover .btn-arrow {
+    transform: translateX(4px);
+}

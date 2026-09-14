@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon Trade Journal - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Identity Services SDK Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="auth-body">
+
+    <!-- Background Glow Animations -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <div class="auth-card">
+        <!-- Logo & Header Section -->
+        <div class="auth-header">
+            <div class="logo-box">
+                <img src="logo.svg" alt="Falcon Logo" class="auth-logo">
+            </div>
+            <h2>Create Your Account</h2>
+            <p>Join Falcon Journal to master your trading discipline.</p>
+        </div>
+
+        <!-- Google Sign-Up Button Container -->
+        <div class="google-btn-wrapper">
+            <div id="g_id_onload"
+                 data-client_id="17632715378-1ai24bv9hh1o250o5npqpb2vutnpkd34.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-size="large"
+                 data-theme="filled_blue"
+                 data-text="signup_with"
+                 data-shape="pill"
+                 data-logo_alignment="left"
+                 data-width="340">
+            </div>
+        </div>
+
+        <!-- Divider Line -->
+        <div class="auth-divider">
+            <span>or continue with email</span>
+        </div>
+
+        <!-- Sign Up Form -->
+        <form class="auth-form" onsubmit="handleEmailSignUp(event)">
+            <div class="input-group">
+                <label for="fullName">Full Name</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉️</span>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login-submit">
+                <span>Create Account</span>
+                <span class="btn-arrow">→</span>
+            </button>
+        </form>
+
+        <!-- Footer Link -->
+        <div class="auth-footer">
+            <p>Already have an account? <a href="login.html">Sign In</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Email Sign Up Handler
+        function handleEmailSignUp(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+
+            const userProfile = {
+                name: fullName,
+                email: email
+            };
+            
+            localStorage.setItem('falcon_logged_in', 'true');
+            localStorage.setItem('falcon_current_user', fullName);
+            localStorage.setItem('falcon_user', JSON.stringify(userProfile));
+
+            alert(`Account created successfully! Welcome, ${fullName}.`);
+            window.location.href = 'index.html';
+        }
+
+        // Google Sign-Up Callback Function
+        function handleCredentialResponse(response) {
+            const responsePayload = parseJwt(response.credential);
+            
+            const userProfile = {
+                id: responsePayload.sub,
+                name: responsePayload.name,
+                email: responsePayload.email,
+                picture: responsePayload.picture
+            };
+            
+            localStorage.setItem('falcon_logged_in', 'true');
+            localStorage.setItem('falcon_current_user', responsePayload.name);
+            localStorage.setItem('falcon_user', JSON.stringify(userProfile));
+
+            alert(`Welcome to Falcon Trade Journal, ${responsePayload.name}!`);
+            window.location.href = "index.html";
+        }
+
+        // JWT Token Decoder Helper
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            return JSON.parse(jsonPayload);
+        }
+    </script>
+</body>
+</html>
